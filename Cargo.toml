@@ -1,0 +1,8 @@
+[package]
+name = "heart"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+maud = "0.26.0"
+warp = "0.3.7"
