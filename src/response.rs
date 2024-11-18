@@ -13,18 +13,88 @@ pub fn hx_with(
         .expect("BUG: impossible")
 }
 
-pub fn hx(res: Markup) -> Response<String> {
-    hx_with(StatusCode::OK, res)
+macro_rules! generate_hx_status_functions {
+    ($($fname:ident, $status:ident);* $(;)?) => {
+        $(
+            pub fn $fname(res: Markup) -> Response<String> {
+                hx_with(StatusCode::$status, res)
+            }
+        )*
+    };
 }
-pub fn hx_nc(res: Markup) -> Response<String> {
-    hx_with(StatusCode::NO_CONTENT, res)
-}
-pub fn hx_notfound(res: Markup) -> Response<String> {
-    hx_with(StatusCode::NOT_FOUND, res)
-}
-pub fn hx_badrequest(res: Markup) -> Response<String> {
-    hx_with(StatusCode::BAD_REQUEST, res)
-}
-pub fn hx_forbidden(res: Markup) -> Response<String> {
-    hx_with(StatusCode::FORBIDDEN, res)
+
+generate_hx_status_functions! {
+    // funny aliases
+    hx, OK;
+    hx_error, IM_A_TEAPOT;
+
+    // 1XX
+    hx_continue, CONTINUE;
+    hx_switching_protocols, SWITCHING_PROTOCOLS;
+    hx_processing, PROCESSING;
+
+    // 2XX
+    hx_ok, OK;
+    hx_created, CREATED;
+    hx_accepted, ACCEPTED;
+    hx_non_authoritative_information, NON_AUTHORITATIVE_INFORMATION;
+    hx_no_content, NO_CONTENT;
+    hx_reset_content, RESET_CONTENT;
+    hx_partial_content, PARTIAL_CONTENT;
+    hx_multi_status, MULTI_STATUS;
+    hx_already_reported, ALREADY_REPORTED;
+    hx_im_used, IM_USED;
+
+    // 3XX
+    hx_multiple_choices, MULTIPLE_CHOICES;
+    hx_moved_permanently, MOVED_PERMANENTLY;
+    hx_found, FOUND;
+    hx_see_other, SEE_OTHER;
+    hx_not_modified, NOT_MODIFIED;
+    hx_use_proxy, USE_PROXY;
+    hx_temporary_redirect, TEMPORARY_REDIRECT;
+    hx_permanent_redirect, PERMANENT_REDIRECT;
+
+    // 4XX
+    hx_bad_request, BAD_REQUEST;
+    hx_unauthorized, UNAUTHORIZED;
+    hx_payment_required, PAYMENT_REQUIRED;
+    hx_forbidden, FORBIDDEN;
+    hx_not_found, NOT_FOUND;
+    hx_method_not_allowed, METHOD_NOT_ALLOWED;
+    hx_not_acceptable, NOT_ACCEPTABLE;
+    hx_proxy_authentication_required, PROXY_AUTHENTICATION_REQUIRED;
+    hx_request_timeout, REQUEST_TIMEOUT;
+    hx_conflict, CONFLICT;
+    hx_gone, GONE;
+    hx_length_required, LENGTH_REQUIRED;
+    hx_precondition_failed, PRECONDITION_FAILED;
+    hx_payload_too_large, PAYLOAD_TOO_LARGE;
+    hx_uri_too_long, URI_TOO_LONG;
+    hx_unsupported_media_type, UNSUPPORTED_MEDIA_TYPE;
+    hx_range_not_satisfiable, RANGE_NOT_SATISFIABLE;
+    hx_expectation_failed, EXPECTATION_FAILED;
+    hx_im_a_teapot, IM_A_TEAPOT;
+    hx_misdirected_request, MISDIRECTED_REQUEST;
+    hx_unprocessable_entity, UNPROCESSABLE_ENTITY;
+    hx_locked, LOCKED;
+    hx_failed_dependency, FAILED_DEPENDENCY;
+    hx_upgrade_required, UPGRADE_REQUIRED;
+    hx_precondition_required, PRECONDITION_REQUIRED;
+    hx_too_many_requests, TOO_MANY_REQUESTS;
+    hx_request_header_fields_too_large, REQUEST_HEADER_FIELDS_TOO_LARGE;
+    hx_unavailable_for_legal_reasons, UNAVAILABLE_FOR_LEGAL_REASONS;
+
+    // 5XX
+    hx_internal_server_error, INTERNAL_SERVER_ERROR;
+    hx_not_implemented, NOT_IMPLEMENTED;
+    hx_bad_gateway, BAD_GATEWAY;
+    hx_service_unavailable, SERVICE_UNAVAILABLE;
+    hx_gateway_timeout, GATEWAY_TIMEOUT;
+    hx_http_version_not_supported, HTTP_VERSION_NOT_SUPPORTED;
+    hx_variant_also_negotiates, VARIANT_ALSO_NEGOTIATES;
+    hx_insufficient_storage, INSUFFICIENT_STORAGE;
+    hx_loop_detected, LOOP_DETECTED;
+    hx_not_extended, NOT_EXTENDED;
+    hx_network_authentication_required, NETWORK_AUTHENTICATION_REQUIRED
 }
