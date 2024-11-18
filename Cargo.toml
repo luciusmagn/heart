@@ -1,10 +1,12 @@
 [package]
 name = "heart"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 authors = ["Lukáš Hozda <luk.hozda@gmail.com>"]
 description = "Hypermedia-based web development of the 1990 future!"
 license = "Fair"
+repository = "https://github.com/luciusmagn/heart"
+homepage = "https://github.com/luciusmagn/heart"
 
 [dependencies]
 ergokv = "0.1.7"
