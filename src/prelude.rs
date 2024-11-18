@@ -1,4 +1,4 @@
-pub use maud::{html, Markup, DOCTYPE};
+pub use maud::{html, Markup, PreEscaped, DOCTYPE};
 pub use warp::{
     http::Response, serve, Filter, Rejection, Reply,
 };
