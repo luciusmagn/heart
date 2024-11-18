@@ -1,27 +1,26 @@
-#+TITLE: Heart
-#+AUTHOR: Lukáš Hozda
-#+VERSION: 0.1.0
+# Heart
 
 A Rust-based web stack combining powerful libraries for building modern, efficient web applications.
 
-* Components
+## Components
 
-- [[https://github.com/seanmonstar/warp][Warp]]: High-performance HTTP server with filter-based routing
-- [[https://github.com/lambda-fairy/maud][Maud]]: Compile-time HTML templating
-- [[https://htmx.org][HTMX]]: Modern web interactions without complex JavaScript
-- [[https://github.com/tikv/tikv][TiKV]]: Distributed, strongly consistent key-value store
+- [Warp](https://github.com/seanmonstar/warp): High-performance HTTP server with filter-based routing
+- [Maud](https://github.com/lambda-fairy/maud): Compile-time HTML templating
+- [HTMX](https://htmx.org): Modern web interactions without complex JavaScript
+- [TiKV](https://github.com/tikv/tikv): Distributed, strongly consistent key-value store
 
-* Installation
+## Installation
 
-Add to your ~Cargo.toml~:
+Add to your `Cargo.toml`:
 
-#+BEGIN_SRC toml
+```toml
 [dependencies]
 heart = "0.1.0"
-#+END_SRC
+```
 
-* Example
-#+BEGIN_SRC rust
+## Example
+
+```rust
 use tokio;
 use heart::prelude::*;
 
@@ -49,20 +48,22 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         .await;
     Ok(())
 }
-#+END_SRC
+```
 
-* Contributions
+## Contributions
 
 Contributions are welcome! Please follow Kant's categorical imperative.
 
-* License
+## License
 
+```txt
 Fair License (2024)
 
 Copyright (c) 2024 Lukáš Hozda
 
-Usage of the software is PERMITTED, modification and redistribution are PERMITTED,
-however all versions of the derived code MUST be clearly marked as such
+Usage of the software is PERMITTED, modification and redistribution are PERMITTED, 
+however all versions of the derived code MUST be clearly marked as such 
 and NOT represented as the original software.
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+```
