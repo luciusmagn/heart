@@ -1,0 +1,39 @@
+#+TITLE: Heart
+#+AUTHOR: Lukáš Hozda
+#+VERSION: 0.1.0
+
+* Heart Stack
+
+A Rust-based web stack combining powerful libraries for building modern, efficient web applications.
+
+** Components
+
+- [[https://github.com/seanmonstar/warp][Warp]]: High-performance HTTP server with filter-based routing
+- [[https://github.com/lambda-fairy/maud][Maud]]: Compile-time HTML templating
+- [[https://htmx.org][HTMX]]: Modern web interactions without complex JavaScript
+- [[https://github.com/tikv/tikv][TiKV]]: Distributed, strongly consistent key-value store
+
+** Installation
+
+Add to your ~Cargo.toml~:
+
+#+BEGIN_SRC toml
+[dependencies]
+heart = "0.1.0"
+#+END_SRC
+
+** Contributions
+
+Contributions are welcome! Please follow Kant's categorical imperative.
+
+** License
+
+Fair License (2024)
+
+Copyright (c) 2024 Lukáš Hozda
+
+Usage of the software is PERMITTED, modification and redistribution are PERMITTED,
+however all versions of the derived code MUST be clearly marked as such
+and NOT represented as the original software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
