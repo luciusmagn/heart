@@ -4,5 +4,7 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+ergokv = "0.1.7"
 maud = "0.26.0"
+tikv-client = "0.3.0"
 warp = "0.3.7"
