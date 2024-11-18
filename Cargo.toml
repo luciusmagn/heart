@@ -1,6 +1,6 @@
 [package]
 name = "heart"
-version = "0.1.7"
+version = "0.1.8"
 edition = "2021"
 authors = ["Lukáš Hozda <luk.hozda@gmail.com>"]
 description = "Hypermedia-based web development of the 1990 future!"
@@ -11,6 +11,8 @@ homepage = "https://github.com/luciusmagn/heart"
 [dependencies]
 ergokv = "0.1.7"
 maud = { version = "0.26.0", features = ["warp"] }
+serde = { version = "1.0.215", features = ["derive"] }
+serde_json = "1.0.133"
 tikv-client = "0.3.0"
 tracing = "0.1.40"
 warp = "0.3.7"

@@ -1,5 +1,8 @@
 use maud::Markup;
+use serde::Serialize;
 use warp::http::{Response, StatusCode};
+use warp::reply;
+use warp::reply::WithStatus;
 
 pub fn hx_with(
     status: StatusCode,
@@ -97,4 +100,101 @@ generate_hx_status_functions! {
     hx_loop_detected, LOOP_DETECTED;
     hx_not_extended, NOT_EXTENDED;
     hx_network_authentication_required, NETWORK_AUTHENTICATION_REQUIRED
+}
+
+pub fn js_with<T: Serialize>(
+    data: &T,
+    status_code: &StatusCode,
+) -> WithStatus<String> {
+    let json =
+        serde_json::to_string(data).expect("BUG: Impossible");
+    reply::with_status(json, *status_code)
+}
+
+macro_rules! generate_js_status_functions {
+    ($($fname:ident, $status:ident);* $(;)?) => {
+        $(
+            pub fn $fname<T: Serialize>(
+                data: &T,
+            ) -> WithStatus<String> {
+                js_with(data, &StatusCode::$status)
+            }
+        )*
+    };
+}
+
+generate_js_status_functions! {
+    // funny aliases
+    js, OK;
+    js_error, IM_A_TEAPOT;
+
+    // 1XX
+    js_continue, CONTINUE;
+    js_switching_protocols, SWITCHING_PROTOCOLS;
+    js_processing, PROCESSING;
+
+    // 2XX
+    js_ok, OK;
+    js_created, CREATED;
+    js_accepted, ACCEPTED;
+    js_non_authoritative_information, NON_AUTHORITATIVE_INFORMATION;
+    js_no_content, NO_CONTENT;
+    js_reset_content, RESET_CONTENT;
+    js_partial_content, PARTIAL_CONTENT;
+    js_multi_status, MULTI_STATUS;
+    js_already_reported, ALREADY_REPORTED;
+    js_im_used, IM_USED;
+
+    // 3XX
+    js_multiple_choices, MULTIPLE_CHOICES;
+    js_moved_permanently, MOVED_PERMANENTLY;
+    js_found, FOUND;
+    js_see_other, SEE_OTHER;
+    js_not_modified, NOT_MODIFIED;
+    js_use_proxy, USE_PROXY;
+    js_temporary_redirect, TEMPORARY_REDIRECT;
+    js_permanent_redirect, PERMANENT_REDIRECT;
+
+    // 4XX
+    js_bad_request, BAD_REQUEST;
+    js_unauthorized, UNAUTHORIZED;
+    js_payment_required, PAYMENT_REQUIRED;
+    js_forbidden, FORBIDDEN;
+    js_not_found, NOT_FOUND;
+    js_method_not_allowed, METHOD_NOT_ALLOWED;
+    js_not_acceptable, NOT_ACCEPTABLE;
+    js_proxy_authentication_required, PROXY_AUTHENTICATION_REQUIRED;
+    js_request_timeout, REQUEST_TIMEOUT;
+    js_conflict, CONFLICT;
+    js_gone, GONE;
+    js_length_required, LENGTH_REQUIRED;
+    js_precondition_failed, PRECONDITION_FAILED;
+    js_payload_too_large, PAYLOAD_TOO_LARGE;
+    js_uri_too_long, URI_TOO_LONG;
+    js_unsupported_media_type, UNSUPPORTED_MEDIA_TYPE;
+    js_range_not_satisfiable, RANGE_NOT_SATISFIABLE;
+    js_expectation_failed, EXPECTATION_FAILED;
+    js_im_a_teapot, IM_A_TEAPOT;
+    js_misdirected_request, MISDIRECTED_REQUEST;
+    js_unprocessable_entity, UNPROCESSABLE_ENTITY;
+    js_locked, LOCKED;
+    js_failed_dependency, FAILED_DEPENDENCY;
+    js_upgrade_required, UPGRADE_REQUIRED;
+    js_precondition_required, PRECONDITION_REQUIRED;
+    js_too_many_requests, TOO_MANY_REQUESTS;
+    js_request_header_fields_too_large, REQUEST_HEADER_FIELDS_TOO_LARGE;
+    js_unavailable_for_legal_reasons, UNAVAILABLE_FOR_LEGAL_REASONS;
+
+    // 5XX
+    js_internal_server_error, INTERNAL_SERVER_ERROR;
+    js_not_implemented, NOT_IMPLEMENTED;
+    js_bad_gateway, BAD_GATEWAY;
+    js_service_unavailable, SERVICE_UNAVAILABLE;
+    js_gateway_timeout, GATEWAY_TIMEOUT;
+    js_http_version_not_supported, HTTP_VERSION_NOT_SUPPORTED;
+    js_variant_also_negotiates, VARIANT_ALSO_NEGOTIATES;
+    js_insufficient_storage, INSUFFICIENT_STORAGE;
+    js_loop_detected, LOOP_DETECTED;
+    js_not_extended, NOT_EXTENDED;
+    js_network_authentication_required, NETWORK_AUTHENTICATION_REQUIRED
 }

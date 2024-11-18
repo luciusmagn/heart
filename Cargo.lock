@@ -712,10 +712,12 @@ dependencies = [
 
 [[package]]
 name = "heart"
-version = "0.1.7"
+version = "0.1.8"
 dependencies = [
  "ergokv",
  "maud",
+ "serde",
+ "serde_json",
  "tikv-client",
  "tracing",
  "warp",
