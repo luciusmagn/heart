@@ -1,6 +1,7 @@
 pub use maud::{html, Markup, PreEscaped, DOCTYPE};
 pub use warp::{
-    http::Response, serve, Filter, Rejection, Reply,
+    http::{Response, StatusCode},
+    reject, serve, Filter, Rejection, Reply,
 };
 
 pub use tracing as log;
