@@ -7,8 +7,11 @@ pub struct FragmentBuilder {
 }
 
 impl FragmentBuilder {
-    pub fn new(main: Markup) -> Self {
-        Self { main, oobs: vec![] }
+    pub fn new<T: FragmentFinalizer>(main: T) -> Self {
+        Self {
+            main: main.to_markup(),
+            oobs: vec![],
+        }
     }
 
     pub fn oob<F>(&mut self, oob: F)
@@ -60,7 +63,7 @@ macro_rules! htmx {
         }}
     };
     ($($toks:tt)*) => {
-        htmx!(__swap_unused, $($toks)*)
+        $crate::htmx!(__swap_unused, $($toks)*)
     };
 }
 
@@ -80,5 +83,14 @@ where
 
     fn to_markup(self) -> Markup {
         self(false)
+    }
+}
+
+impl FragmentFinalizer for Markup {
+    fn into_string(self) -> String {
+        self.into_string()
+    }
+    fn to_markup(self) -> Markup {
+        self
     }
 }
