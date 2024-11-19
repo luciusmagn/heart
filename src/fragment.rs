@@ -14,11 +14,12 @@ impl FragmentBuilder {
         }
     }
 
-    pub fn oob<F>(&mut self, oob: F)
+    pub fn oob<F>(&mut self, oob: F) -> &mut Self
     where
         F: FnOnce(bool) -> Markup,
     {
         self.oobs.push(oob(true));
+        self
     }
 
     pub fn build(self) -> Markup {
