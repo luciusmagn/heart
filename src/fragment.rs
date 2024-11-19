@@ -41,7 +41,9 @@ impl FragmentBuilder {
     }
 }
 
-pub fn compose(main: Markup) -> FragmentBuilder {
+pub fn compose<T: FragmentFinalizer>(
+    main: T,
+) -> FragmentBuilder {
     FragmentBuilder::new(main)
 }
 
