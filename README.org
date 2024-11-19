@@ -1,6 +1,6 @@
 #+TITLE: Heart
 #+AUTHOR: Lukáš Hozda
-#+VERSION: 0.1.0
+#+VERSION: 0.1.9
 
 A Rust-based web stack combining powerful libraries for building modern, efficient web applications.
 
@@ -17,7 +17,7 @@ Add to your ~Cargo.toml~:
 
 #+BEGIN_SRC toml
 [dependencies]
-heart = "0.1.5"
+heart = "0.1.9"
 #+END_SRC
 
 * Example
