@@ -51,11 +51,13 @@ macro_rules! fragment {
 #[macro_export]
 macro_rules! htmx {
     ($swap:ident, $($toks:tt)*) => {
-        move |$swap: bool| {
+        move |$swap: bool| {{
+            let $swap = $swap.then_some("true");
+
             maud::html! {
                 $($toks)*
             }
-        }
+        }}
     };
     ($($toks:tt)*) => {
         htmx!(__swap_unused, $($toks)*)
