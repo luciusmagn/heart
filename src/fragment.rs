@@ -14,7 +14,7 @@ impl FragmentBuilder {
         }
     }
 
-    pub fn oob<F>(&mut self, oob: F) -> &mut Self
+    pub fn oob<F>(self, oob: F) -> Self
     where
         F: FnOnce(bool) -> Markup,
     {
