@@ -1,6 +1,6 @@
 [package]
 name = "heart"
-version = "0.1.9"
+version = "0.1.10"
 edition = "2021"
 authors = ["Lukáš Hozda <luk.hozda@gmail.com>"]
 description = "Hypermedia-based web development of the 1990 future!"
