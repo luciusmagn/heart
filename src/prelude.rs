@@ -1,4 +1,5 @@
-pub use crate::maud::{html, Markup, PreEscaped, DOCTYPE};
+pub use crate::html;
+pub use crate::maud::{Markup, PreEscaped, DOCTYPE};
 pub use warp::{
     http::{Response, StatusCode},
     reject, serve, Filter, Rejection, Reply,

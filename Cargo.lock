@@ -712,7 +712,7 @@ dependencies = [
 
 [[package]]
 name = "heart"
-version = "0.1.17"
+version = "0.1.18"
 dependencies = [
  "ergokv",
  "heart-patched-maud",
