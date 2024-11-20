@@ -1,7 +1,7 @@
 pub use ergokv;
 pub use ergokv::Store;
 pub use heart_patched_maud as maud;
-pub use heart_patched_maud::{html, Markup};
+pub use heart_patched_maud::{Markup, PreEscaped};
 pub use tikv_client;
 pub use warp;
 pub use warp::{
