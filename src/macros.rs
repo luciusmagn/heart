@@ -7,11 +7,18 @@ macro_rules! filter {
 
 #[macro_export]
 macro_rules! html {
-    ($(tok:tt)*) => {{
+    ($($tok:tt)*) => {{
         use $crate::maud as maud;
 
         maud::html! {
             $($tok)*
         }
     }}
+}
+
+#[test]
+pub fn test_html() {
+    let m = html! {
+        div {}
+    };
 }
