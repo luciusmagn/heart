@@ -1,4 +1,4 @@
-use maud::{html, Markup, PreEscaped};
+use crate::maud::{html, Markup, PreEscaped};
 use tracing::error;
 
 pub struct FragmentBuilder {
@@ -32,6 +32,7 @@ impl FragmentBuilder {
             })
             .map(|(_, o)| o);
 
+        pub use crate::maud;
         html! {
             (self.main)
             @for oob in oob_strings {

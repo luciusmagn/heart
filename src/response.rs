@@ -1,4 +1,4 @@
-use maud::Markup;
+use crate::maud::Markup;
 use serde::Serialize;
 use warp::http::{Response, StatusCode};
 use warp::reply;
