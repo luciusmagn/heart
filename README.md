@@ -15,7 +15,7 @@ Add to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-heart = "0.1.9"
+heart = "0.1.16"
 ```
 
 ## Example

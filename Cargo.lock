@@ -712,15 +712,38 @@ dependencies = [
 
 [[package]]
 name = "heart"
-version = "0.1.15"
+version = "0.1.16"
 dependencies = [
  "ergokv",
- "maud",
+ "heart-patched-maud",
  "serde",
  "serde_json",
  "tikv-client",
  "tracing",
  "warp",
+]
+
+[[package]]
+name = "heart-patched-maud"
+version = "0.26.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f0837be75424407f658b01112007c55568e6edaadef1691bb6993c66a459c243"
+dependencies = [
+ "heart-patched-maud_macros",
+ "itoa",
+ "warp",
+]
+
+[[package]]
+name = "heart-patched-maud_macros"
+version = "0.26.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "739e41d15c209d517f089e6759a6e781075922393ea6e4ccdf433a96b32cc566"
+dependencies = [
+ "proc-macro-error",
+ "proc-macro2",
+ "quote",
+ "syn 2.0.87",
 ]
 
 [[package]]
@@ -1185,29 +1208,6 @@ name = "matchit"
 version = "0.7.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0e7465ac9959cc2b1404e8e2367b43684a6d13790fe23056cc8c6c5a6b7bcb94"
-
-[[package]]
-name = "maud"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "df518b75016b4289cdddffa1b01f2122f4a49802c93191f3133f6dc2472ebcaa"
-dependencies = [
- "itoa",
- "maud_macros",
- "warp",
-]
-
-[[package]]
-name = "maud_macros"
-version = "0.26.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fa453238ec218da0af6b11fc5978d3b5c3a45ed97b722391a2a11f3306274e18"
-dependencies = [
- "proc-macro-error",
- "proc-macro2",
- "quote",
- "syn 2.0.87",
-]
 
 [[package]]
 name = "memchr"
@@ -2102,7 +2102,7 @@ dependencies = [
  "fastrand",
  "once_cell",
  "rustix",
- "windows-sys 0.52.0",
+ "windows-sys 0.59.0",
 ]
 
 [[package]]
