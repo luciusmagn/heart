@@ -56,7 +56,9 @@ macro_rules! fragment {
 
 #[macro_export]
 macro_rules! htmx {
-    ($swap:ident, $($toks:tt)*) => {
+    ($swap:ident, $($toks:tt)*) => {{
+        use heart::maud as maud;
+
         move |$swap: bool| {{
             let $swap = $swap.then_some("true");
 
@@ -64,7 +66,7 @@ macro_rules! htmx {
                 $($toks)*
             }
         }}
-    };
+    }};
     ($($toks:tt)*) => {
         $crate::htmx!(__swap_unused, $($toks)*)
     };
