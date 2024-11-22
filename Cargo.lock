@@ -416,9 +416,9 @@ checksum = "5443807d6dff69373d433ab9ef5378ad8df50ca6298caf15de6e52e24aaf54d5"
 
 [[package]]
 name = "ergokv"
-version = "0.1.7"
+version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28a5747ba181240617d4900e7c21f2594f42b042cc18a76c58dd3f5a9297183a"
+checksum = "926d1d34d9dfe90990635e9ee7b6a734a212fa6bdb619d8ed606e0ad42861357"
 dependencies = [
  "async-stream",
  "ciborium",
@@ -433,9 +433,9 @@ dependencies = [
 
 [[package]]
 name = "ergokv-macro"
-version = "0.1.7"
+version = "0.1.8"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3c5561aca475d8bacb912bff01a2b87f0e092c0ba7e17e98233fd9336a61f598"
+checksum = "1fcdb369eb8eab9308a1175f4c1ff2e4bccc77478d6d660469f9f5d1fd74211e"
 dependencies = [
  "proc-macro2",
  "quote",
@@ -712,7 +712,7 @@ dependencies = [
 
 [[package]]
 name = "heart"
-version = "0.1.19"
+version = "0.1.20"
 dependencies = [
  "ergokv",
  "heart-patched-maud",

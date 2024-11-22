@@ -12,4 +12,4 @@ pub use tracing::{
 };
 
 pub use crate::response::*;
-pub use ergokv::Store;
+pub use ergokv::{self, Store};
