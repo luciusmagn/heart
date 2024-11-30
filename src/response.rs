@@ -198,3 +198,12 @@ generate_js_status_functions! {
     js_not_extended, NOT_EXTENDED;
     js_network_authentication_required, NETWORK_AUTHENTICATION_REQUIRED
 }
+
+pub fn sse_chunk<T: Into<String>>(s: T) -> Event {
+    self::sse::Event::default().event("message-chunk").data(s)
+}
+pub fn sse_complete<T: Into<String>>(s: T) -> Event {
+    self::sse::Event::default()
+        .event("message-complete")
+        .data(s)
+}
