@@ -199,10 +199,10 @@ generate_js_status_functions! {
     js_network_authentication_required, NETWORK_AUTHENTICATION_REQUIRED
 }
 
-pub fn sse_chunk<T: Into<String>>(s: T) -> Event {
+pub fn sse_chunk<T: Into<String>>(s: T) -> crate::sse::Event {
     crate::sse::Event::default().event("message-chunk").data(s)
 }
-pub fn sse_complete<T: Into<String>>(s: T) -> Event {
+pub fn sse_complete<T: Into<String>>(s: T) -> crate::sse::Event {
     crate::sse::Event::default()
         .event("message-complete")
         .data(s)
